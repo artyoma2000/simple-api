@@ -24,6 +24,7 @@ init_db()
 
 def transliterate(text):
     translit_map = {
+
         'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd',
         'е': 'e', 'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i',
         'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n',
@@ -32,14 +33,33 @@ def transliterate(text):
         'ш': 'sh', 'щ': 'shch', 'ъ': '', 'ы': 'y', 'ь': '',
         'э': 'e', 'ю': 'yu', 'я': 'ya'
     }
+
+
     return ''.join(translit_map.get(char, char) for char in text)
+
+def transliterate_en_ru(text):
+
+    translit_en_to_ru_map = {
+        'a': 'а', 'b': 'б', 'v': 'в', 'g': 'г', 'd': 'д',
+        'e': 'е', 'yo': 'ё', 'zh': 'ж', 'z': 'з', 'i': 'и',
+        'y': 'й', 'k': 'к', 'l': 'л', 'm': 'м', 'n': 'н',
+        'o': 'о', 'p': 'п', 'r': 'р', 's': 'с', 't': 'т',
+        'u': 'у', 'f': 'ф', 'kh': 'х', 'ts': 'ц', 'ch': 'ч',
+        'sh': 'ш', 'shch': 'щ', 'y': 'ы', 'e': 'э', 'yu': 'ю', 'ya': 'я'
+    }
+
+    return ''.join(translit_en_to_ru_map.get(char, char) for char in text)
 
 
 @app.route('/арі', methods=['POST'])
 def transliterate_text():
     data = request.json
     text = data.get('data', '')
-    transliterated_text = transliterate(text)
+
+    if (transliterate(text) is None) or (transliterate(text) == text):
+        transliterated_text = transliterate_en_ru(text)
+    else:
+        transliterated_text = transliterate(text)
 
 
     return jsonify({"status": "success", "data": transliterated_text})
