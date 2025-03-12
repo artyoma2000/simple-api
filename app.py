@@ -48,8 +48,10 @@ def transliterate_en_ru(text):
         'sh': 'ш', 'shch': 'щ', 'y': 'ы', 'e': 'э', 'yu': 'ю', 'ya': 'я'
     }
 
-    return ''.join(translit_en_to_ru_map.get(char, char) for char in text)
+    for key in sorted(translit_en_to_ru_map.keys(), key=len, reverse=True):
+        text = text.replace(key, translit_en_to_ru_map[key])
 
+    return text
 
 @app.route('/арі', methods=['POST'])
 def transliterate_text():
