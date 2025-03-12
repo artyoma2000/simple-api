@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa; /* Светло-голубой фон */
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #ffffff; /* Белый фон для контейнера */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    color: #00796b; /* Темно-голубой заголовок */
+    text-align: center;
+}
+
+h2 {
+    color: #00796b; /* Темно-голубой подзаголовок */
+}
+
+input[type="text"],
+input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #00796b; /* Темно-голубая рамка */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[readonly] {
+    background-color: #f0f0f0; /* Светло-серый фон для поля вывода */
+}
+
+button {
+    background-color: #00796b; /* Темно-голубая кнопка */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #004d40; /* Более темный оттенок при наведении */
+}
+
+#historyOutput {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #00796b;
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Светло-серый фон для истории */
+}
